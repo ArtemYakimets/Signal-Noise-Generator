@@ -1,18 +1,15 @@
 import numpy as np
-import matplotlib
-matplotlib.use('TkAgg')
-
 import matplotlib.pyplot as plt
 
-# Гармонический сигнал
+
 def harmonic_signal(A, T, T_N, delta_t=None):
     if delta_t is None:
-        delta_t = T / 1000  # По умолчанию шаг дискретизации
+        delta_t = T / 1000
     t = np.arange(0, T_N, delta_t)
     s = A * np.sin((2 * np.pi / T) * t)
     return t, s
 
-# Полигармонический сигнал
+
 def polyharmonic_signal(T, T_N, delta_t=None, A_list=[1]):
     if delta_t is None:
         delta_t = T / 1000
@@ -22,7 +19,7 @@ def polyharmonic_signal(T, T_N, delta_t=None, A_list=[1]):
         s += A * np.sin((2 * np.pi * i / T) * t)
     return t, s
 
-# Однополярные импульсы
+
 def unipolar_pulses(T, n, T_N, delta_t):
     t = np.arange(0, T_N, delta_t)
     s = np.zeros_like(t)
@@ -32,7 +29,7 @@ def unipolar_pulses(T, n, T_N, delta_t):
         s[start:end] = 1
     return t, s
 
-# Разнополярные импульсы
+
 def bipolar_pulses(T, n, T_N, delta_t):
     t = np.arange(0, T_N, delta_t)
     s = np.zeros_like(t)
@@ -42,47 +39,47 @@ def bipolar_pulses(T, n, T_N, delta_t):
         s[start:end] = 1 if i % 2 == 0 else -1
     return t, s
 
-# Затухающая синусоида
+
 def damped_sine_wave(A, alpha, f, T_N, delta_t):
     t = np.arange(0, T_N, delta_t)
     s = A * np.exp(-alpha * t) * np.sin(2 * np.pi * f * t)
     return t, s
 
-# Одиночный импульс
+
 def single_pulse(T, T_N, delta_t):
     t = np.arange(0, T_N, delta_t)
     s = np.zeros_like(t)
     s[t < T] = 1
     return t, s
 
-# Одиночный прямоугольный импульс
+
 def single_rectangular_pulse(A, T, T_N, delta_t):
     t = np.arange(0, T_N, delta_t)
     s = np.zeros_like(t)
     s[np.abs(t - T_N / 2) <= T / 2] = A
     return t, s
 
-# Одиночный экспоненциальный импульс
+
 def single_exponential_pulse(A, beta, T_N, delta_t):
     t = np.arange(0, T_N, delta_t)
     s = A * np.exp(-beta * t)
     return t, s
 
-# Единичный скачок
+
 def unit_step(T, T_N, delta_t):
     t = np.arange(0, T_N, delta_t)
     s = np.zeros_like(t)
     s[t >= T] = 1
     return t, s
 
-# Дельта-функция
+
 def delta_function(A, T, T_N, delta_t):
     t = np.arange(0, T_N, delta_t)
     s = np.zeros_like(t)
     s[np.abs(t - T) < delta_t / 2] = A
     return t, s
 
-# Треугольный сигнал
+
 def triangular_signal(A, T, T_N, delta_t):
     t = np.arange(0, T_N, delta_t)
     s = np.zeros_like(t)
@@ -94,7 +91,7 @@ def triangular_signal(A, T, T_N, delta_t):
             s[i] = 4 * A * (1 - phase)
     return t, s
 
-# Пример работы с функциями сигналов
+
 def plot_signals():
     plt.figure(figsize=(15, 20))
 
@@ -188,7 +185,3 @@ def plot_signals():
 
     plt.tight_layout()
     plt.show()
-
-
-# Вызов функции для отображения графиков
-plot_signals()
