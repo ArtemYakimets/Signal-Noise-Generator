@@ -279,9 +279,13 @@ pip install git+https://github.com/ArtemYakimets/Signal-Noise-Generator.git@dev
 import signal_noise_generator
 ```
 
-Для использования основных функций, представленных в нашем модуле, достаточно прописать:
+Для использования основных функций, представленных в нашем модуле, достаточно прописать (генератор помех):
 ```python
-from signal_noise_generator import function`
+from signal_noise_generator.noise_generator.noises import function`
+```
+или (генератор сигналов):
+```python
+from signal_noise_generator.signal_generator.signals import function`
 ```
 
 ## Производительнось 
@@ -291,5 +295,6 @@ from signal_noise_generator import function`
 Также стоит отметить, что время работы функций модуля фиксировано
 
 
-# Примеры использования разработанного модуля
+## Использование разработанного модуля
+
 
