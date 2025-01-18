@@ -263,7 +263,7 @@
 pip install signal-noise-generator
 ```
 
-Для установки пользоваталем разработанного модуля, рекомендуется использовать
+Для альтернативной установки пользоваталем разработанного модуля, рекомендуется использовать
 следующую последовательность действий:
 ```
 git clone https://github.com/ArtemYakimets/Signal-Noise-Generator.git
@@ -285,11 +285,11 @@ import signal_noise_generator
 
 Для использования основных функций, представленных в нашем модуле, достаточно прописать (генератор помех):
 ```python
-from signal_noise_generator.noise_generator.noises import function`
+from signal_noise_generator.noise_generator.noises import function
 ```
 или (генератор сигналов):
 ```python
-from signal_noise_generator.signal_generator.signals import function`
+from signal_noise_generator.signal_generator.signals import function
 ```
 
 ## Производительнось 
@@ -301,8 +301,7 @@ from signal_noise_generator.signal_generator.signals import function`
 
 ## Использование разработанного модуля
 
-Помимо действий, описанных в модуле "Интеграция", необходимо импортировать
-билиотеку matplotlib, позволяющую создать визуализацию сигнала/помехи:
+В качестве примера работы с функциями сигналов и помех используется библиотека `matplotlib`:
 ```python
 import matplotlib.pyplot as plt
 ```
