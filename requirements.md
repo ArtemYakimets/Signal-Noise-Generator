@@ -303,11 +303,163 @@ from signal_noise_generator.signal_generator.signals import function`
 import matplotlib.pyplot as plt
 ```
 
-Далее, например, для генерации, например, белого шума, достаточно выполнить:
+Далее, для генерации, например, белого шума, достаточно выполнить:
 ```python
-size = 1000 # время ( в секундах ????)
+size = 1000
 wn = white_noise(size)
 plt.plot(wn)
 plt.title("Белый шум")
 plt.show()
 ```
+
+## Основные примеры использования
+
+Рассмотрим основные примеры генерации помех, а после сигналов. 
+
+### Помехи
+- **Белый шум:**
+```python
+size = 1000
+wn = white_noise(size)
+plt.plot(wn)
+plt.title("Белый шум")
+plt.show()
+```
+- **Розовый шум**
+```python
+size = 1000
+pn = pink_noise(size)
+plt.plot(pn)
+plt.title("Розовый шум")
+plt.show()
+```
+- **Низкочастотный шум**
+```python
+fs = 5000
+cutoff = 1000 
+size = 1000
+filtered_wn = white_noise_filtered(size, cutoff, fs)
+plt.plot(filtered_wn)
+plt.title("Белый шум срезанный фильтром")
+plt.show()
+```
+- **Импульсная помеха**
+```python
+size = 1000
+impulse = impulse_noise(size)
+plt.plot(impulse)
+plt.title("Импульсная помеха")
+plt.show()
+```
+### Сигналы
+- **Гармонический сигнал**
+```python
+t, s = harmonic_signal(A=1, T=2, T_N=10)
+plt.subplot(6, 2, 1)
+plt.plot(t, s)
+plt.title("Гармонический сигнал")
+plt.xlabel("Время (с)")
+plt.ylabel("Амплитуда")
+plt.show()
+```
+- **Полигармонический сигнал**
+```python
+t, s = polyharmonic_signal(A_list=[1, 0.5, 0.3], T=2, T_N=10)
+plt.subplot(6, 2, 2)
+plt.plot(t, s)
+plt.title("Полигармонический сигнал")
+plt.xlabel("Время (с)")
+plt.ylabel("Амплитуда")
+plt.show()
+```
+- **Однополярные импульсы**
+```python
+t, s = unipolar_pulses(T=1, n=5, T_N=10, delta_t=0.01)
+plt.subplot(6, 2, 3)
+plt.step(t, s, where='post')
+plt.title("Однополярные импульсы")
+plt.xlabel("Время (с)")
+plt.ylabel("Амплитуда")
+plt.show()
+```
+- **Разнополярные импульсы**
+```python
+t, s = bipolar_pulses(T=1, n=5, T_N=10, delta_t=0.01)
+plt.subplot(6, 2, 4)
+plt.step(t, s, where='post')
+plt.title("Разнополярные импульсы")
+plt.xlabel("Время (с)")
+plt.ylabel("Амплитуда")
+plt.show()
+```
+- **Затухающая синусоида**
+```python
+t, s = damped_sine_wave(A=1, alpha=0.5, f=2, T_N=10, delta_t=0.01)
+plt.subplot(6, 2, 5)
+plt.plot(t, s)
+plt.title("Затухающая синусоида")
+plt.xlabel("Время (с)")
+plt.ylabel("Амплитуда")
+plt.show()
+```
+- **Одиночный импульс**
+```python
+t, s = single_pulse(T=2, T_N=10, delta_t=0.01)
+plt.subplot(6, 2, 6)
+plt.step(t, s, where='post')
+plt.title("Одиночный импульс")
+plt.xlabel("Время (с)")
+plt.ylabel("Амплитуда")
+plt.show()
+```
+- **Одиночный п/у импульс**
+```python
+t, s = single_rectangular_pulse(A=1, T=2, T_N=10, delta_t=0.01)
+plt.subplot(6, 2, 7)
+plt.plot(t, s)
+plt.title("Одиночный прямоугольный импульс")
+plt.xlabel("Время (с)")
+plt.ylabel("Амплитуда")
+plt.show()
+```
+- **Одиночный экспоненциальный импульс**
+```python
+t, s = single_exponential_pulse(A=1, beta=1, T_N=10, delta_t=0.01)
+plt.subplot(6, 2, 8)
+plt.plot(t, s)
+plt.title("Одиночный экспоненциальный импульс")
+plt.xlabel("Время (с)")
+plt.ylabel("Амплитуда")
+plt.show()
+```
+- **Единичный скачок**
+```python
+t, s = unit_step(T=5, T_N=10, delta_t=0.01)
+plt.subplot(6, 2, 9)
+plt.step(t, s, where='post')
+plt.title("Единичный скачок")
+plt.xlabel("Время (с)")
+plt.ylabel("Амплитуда")
+plt.show()
+```
+- **Дельта-функция**
+```python
+t, s = delta_function(A=1, T=5, T_N=10, delta_t=0.01)
+plt.subplot(6, 2, 10)
+plt.stem(t, s, basefmt=" ")
+plt.title("Дельта-функция")
+plt.xlabel("Время (с)")
+plt.ylabel("Амплитуда")
+plt.show()
+```
+- **Треугольный сигнал**
+```python
+t, s = triangular_signal(A=1, T=2, T_N=10, delta_t=0.01)
+plt.subplot(6, 2, 11)
+plt.plot(t, s)
+plt.title("Треугольный сигнал")
+plt.xlabel("Время (с)")
+plt.ylabel("Амплитуда")
+plt.show()
+```
+
