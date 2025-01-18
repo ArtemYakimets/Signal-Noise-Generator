@@ -297,4 +297,17 @@ from signal_noise_generator.signal_generator.signals import function`
 
 ## Использование разработанного модуля
 
+Помимо действий, описанных в модуле "Интеграция", необходимо импортировать
+билиотеку matplotlib, позволяющую создать визуализацию сигнала/помехи:
+```python
+import matplotlib.pyplot as plt
+```
 
+Далее, например, для генерации, например, белого шума, достаточно выполнить:
+```python
+size = 1000 # время ( в секундах ????)
+wn = white_noise(size)
+plt.plot(wn)
+plt.title("Белый шум")
+plt.show()
+```
